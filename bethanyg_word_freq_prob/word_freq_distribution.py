@@ -21,8 +21,10 @@ def make_freq_distrib(word_freq: dict) -> dict:
 
 def make_word_freq_distrib(freq_distrib: dict) -> dict:
     # Create dict where values are list of frequencies greater than frequency of current key
-    freq_greater = {k: [in_v for in_v in freq_distrib.values() if in_v > v] for k, v in
-                    freq_distrib.items()}
+    freq_greater = {k:
+                        [in_v for in_v in freq_distrib.values() if in_v > v]
+                    for k, v in freq_distrib.items()
+                    }
     # sum the list of greater frequency(cumsum final value) and divide by total frequency.
     freq_total = sum(freq_distrib.values())
     word_freq_distrib = {k: sum(v) / freq_total for k, v in freq_greater.items()}
