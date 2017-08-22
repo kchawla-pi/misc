@@ -3,7 +3,7 @@ import operator
 
 # A note, I used ordered dict as it made it easier for me to visualize the data and solve
 # it when it is in order. using a dict does not change the answer.
-def make_word_freq(text):
+def make_word_freq(text:str) -> dict:
     # Create word frequency dict.
     text = text.lower()
     only_letters = [char_ for char_ in text if char_ in string.ascii_letters or char_ == ' ']
@@ -12,14 +12,14 @@ def make_word_freq(text):
     return word_freq
 
 
-def make_freq_distrib(word_freq):
+def make_freq_distrib(word_freq: dict) -> dict:
     # create dict of frequecy of word frequencies
     freq_distrib = {v: list(word_freq.values()).count(v) for k, v in word_freq.items()}
     freq_distrib = dict(sorted(freq_distrib.items(), key=operator.itemgetter(1)))
     return freq_distrib
 
 
-def make_word_freq_distrib(freq_distrib):
+def make_word_freq_distrib(freq_distrib: dict) -> dict:
     # Create dict where values are list of frequencies greater than frequency of current key
     freq_greater = {k: [in_v for in_v in freq_distrib.values() if in_v > v] for k, v in
                     freq_distrib.items()}
